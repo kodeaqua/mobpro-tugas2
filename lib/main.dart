@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+const String _npm = "065119079";
 const String _github = "https://github.com/kodeaqua/mobpro-tugas2";
 const int backgroundColor = 0xFFD7CCC8;
 const int accentColor = 0xFF8D6E63;
@@ -189,6 +190,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       tooltip: "Salin NPM",
                                       onPressed: () {
+                                        Clipboard.setData(
+                                            const ClipboardData(text: _npm));
                                         Fluttertoast.showToast(
                                             msg: "NPM berhasil disalin!",
                                             toastLength: Toast.LENGTH_SHORT,
