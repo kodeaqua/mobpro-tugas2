@@ -4,6 +4,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 const String _github = "https://github.com/kodeaqua/mobpro-tugas2";
+const int backgroundColor = 0xFFD7CCC8;
+const int accentColor = 0xFF8D6E63;
+const int accentColor2 = 0xFF5D4037;
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Colors.white));
+        const SystemUiOverlayStyle(statusBarColor: Color(backgroundColor)));
     return MaterialApp(
       title: 'Tugas 2 Mobile Programming',
       debugShowCheckedModeBanner: false,
@@ -48,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
         value: SystemUiOverlayStyle.light,
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: const Color(backgroundColor),
               foregroundColor: Colors.black,
               leading: Builder(
                 builder: (BuildContext context) {
@@ -61,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 1,
                           textColor: Colors.white,
-                          fontSize: 16.0);
+                          backgroundColor: const Color(accentColor2));
                     },
                     tooltip:
                         MaterialLocalizations.of(context).backButtonTooltip,
@@ -81,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
+                              backgroundColor: const Color(backgroundColor),
                               title: const Text(
                                 'Tentang aplikasi',
                                 style: TextStyle(
@@ -93,7 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 TextButton(
                                     onPressed: () =>
                                         Navigator.pop(context, 'Tutup'),
-                                    child: const Text('Tutup'))
+                                    child: const Text(
+                                      'Tutup',
+                                      style: TextStyle(color: Colors.black),
+                                    ))
                               ],
                             ));
                   },
@@ -102,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ],
             ),
-            backgroundColor: Colors.white,
+            backgroundColor: const Color(backgroundColor),
             body: SingleChildScrollView(
               child: Center(
                 child: Row(
@@ -113,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         const Padding(padding: EdgeInsets.only(top: 32)),
                         Card(
-                          elevation: 3,
+                          elevation: 2,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(64),
                           ),
@@ -135,13 +142,16 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: EdgeInsets.only(top: 3, bottom: 3)),
                         const Text(
                           "adam.065119079@unpak.ac.id",
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                          style: TextStyle(fontSize: 14, color: Colors.black),
                         ),
                         const Padding(
                             padding: EdgeInsets.only(top: 6, bottom: 6)),
                         Card(
-                            elevation: 3,
-                            color: const Color(0xff448AFF),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                            elevation: 2,
+                            color: const Color(accentColor),
                             child: Container(
                                 width: 320,
                                 padding: const EdgeInsets.all(24),
@@ -149,7 +159,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: [
                                     const Icon(
                                       Icons.perm_identity_outlined,
-                                      color: Colors.white,
                                     ),
                                     const Padding(
                                         padding: EdgeInsets.only(right: 24)),
@@ -160,7 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         Text(
                                           "Nomor Pokok Mahasiswa",
                                           style: TextStyle(
-                                              color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -169,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 top: 3, bottom: 3)),
                                         Text(
                                           "065119079",
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(),
                                         ),
                                       ],
                                     ),
@@ -178,7 +186,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     IconButton(
                                       icon: const Icon(
                                         Icons.copy_outlined,
-                                        color: Colors.white,
                                       ),
                                       tooltip: "Salin NPM",
                                       onPressed: () {
@@ -188,14 +195,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                             gravity: ToastGravity.BOTTOM,
                                             timeInSecForIosWeb: 1,
                                             textColor: Colors.white,
-                                            fontSize: 16.0);
+                                            backgroundColor:
+                                                const Color(accentColor2));
                                       },
                                     )
                                   ],
                                 ))),
                         Card(
-                            elevation: 3,
-                            color: const Color(0xff448AFF),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                            elevation: 2,
+                            color: const Color(accentColor),
                             child: Container(
                                 width: 320,
                                 padding: const EdgeInsets.all(24),
@@ -203,7 +214,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   children: [
                                     const Icon(
                                       Icons.verified_user_outlined,
-                                      color: Colors.white,
                                     ),
                                     const Padding(
                                         padding: EdgeInsets.only(right: 24)),
@@ -214,7 +224,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         Text(
                                           "Program Studi",
                                           style: TextStyle(
-                                              color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -223,23 +232,25 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 top: 3, bottom: 3)),
                                         Text(
                                           "Ilmu Komputer",
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(),
                                         ),
                                       ],
                                     )
                                   ],
                                 ))),
                         Card(
-                            elevation: 3,
-                            color: const Color(0xff448AFF),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                            elevation: 2,
+                            color: const Color(accentColor),
                             child: Container(
                                 width: 320,
                                 padding: const EdgeInsets.all(24),
                                 child: Row(
                                   children: [
                                     const Icon(
-                                      Icons.storage_outlined,
-                                      color: Colors.white,
+                                      Icons.link_outlined,
                                     ),
                                     const Padding(
                                         padding: EdgeInsets.only(right: 24)),
@@ -250,7 +261,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         const Text(
                                           "GitHub",
                                           style: TextStyle(
-                                              color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -259,7 +269,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 top: 3, bottom: 3)),
                                         const Text(
                                           "https://github.com/kodeaqua",
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(),
                                         ),
                                         const Padding(
                                             padding: EdgeInsets.only(
@@ -272,7 +282,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 TextStyle(color: Colors.black),
                                           ),
                                           style: ElevatedButton.styleFrom(
-                                              primary: Colors.white),
+                                              primary:
+                                                  const Color(backgroundColor)),
                                         )
                                       ],
                                     )
