@@ -97,3 +97,7 @@ flutter:
           - asset: fonts/Montserrat-SemiBoldItalic.ttf
             weight: 600
             style: italic
+      - family: Satisfy
+        fonts:
+          - asset: fonts/Satisfy-Regular.ttf
+            weight: 400

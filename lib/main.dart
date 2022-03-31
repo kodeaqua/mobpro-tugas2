@@ -135,8 +135,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         const Text(
                           "Adam Najmi Zidan",
                           style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: "Montserrat",
+                              letterSpacing: 3,
+                              fontSize: 32,
+                              fontFamily: "Satisfy",
                               fontWeight: FontWeight.w600),
                         ),
                         const Padding(
