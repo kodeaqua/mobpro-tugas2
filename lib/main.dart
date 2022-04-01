@@ -155,8 +155,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             elevation: 2,
                             color: const Color(accentColor),
                             child: Container(
-                                width: 320,
-                                padding: const EdgeInsets.all(24),
+                                width: ((MediaQuery.of(context).size.width) /
+                                    100 *
+                                    80),
+                                padding:
+                                    const EdgeInsets.fromLTRB(24, 24, 24, 12),
                                 child: Row(
                                   children: [
                                     const Icon(
@@ -167,42 +170,50 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: const [
-                                        Text(
+                                      children: [
+                                        const Text(
                                           "Nomor Pokok Mahasiswa",
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 3, bottom: 3)),
-                                        Text(
-                                          "065119079",
-                                          style: TextStyle(),
+                                        const Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 0)),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              "065119079",
+                                              style: TextStyle(),
+                                            ),
+                                            IconButton(
+                                              icon: const Icon(
+                                                Icons.copy_outlined,
+                                                size: 16,
+                                              ),
+                                              tooltip: "Salin NPM",
+                                              onPressed: () {
+                                                Clipboard.setData(
+                                                    const ClipboardData(
+                                                        text: _npm));
+                                                Fluttertoast.showToast(
+                                                    msg:
+                                                        "NPM berhasil disalin!",
+                                                    toastLength:
+                                                        Toast.LENGTH_SHORT,
+                                                    gravity:
+                                                        ToastGravity.BOTTOM,
+                                                    timeInSecForIosWeb: 1,
+                                                    textColor: Colors.white,
+                                                    backgroundColor:
+                                                        const Color(
+                                                            accentColor2));
+                                              },
+                                            )
+                                          ],
                                         ),
                                       ],
                                     ),
-                                    const Padding(
-                                        padding: EdgeInsets.only(left: 12)),
-                                    IconButton(
-                                      icon: const Icon(
-                                        Icons.copy_outlined,
-                                      ),
-                                      tooltip: "Salin NPM",
-                                      onPressed: () {
-                                        Clipboard.setData(
-                                            const ClipboardData(text: _npm));
-                                        Fluttertoast.showToast(
-                                            msg: "NPM berhasil disalin!",
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.BOTTOM,
-                                            timeInSecForIosWeb: 1,
-                                            textColor: Colors.white,
-                                            backgroundColor:
-                                                const Color(accentColor2));
-                                      },
-                                    )
                                   ],
                                 ))),
                         Card(
@@ -212,7 +223,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             elevation: 2,
                             color: const Color(accentColor),
                             child: Container(
-                                width: 320,
+                                width: ((MediaQuery.of(context).size.width) /
+                                    100 *
+                                    80),
                                 padding: const EdgeInsets.all(24),
                                 child: Row(
                                   children: [
@@ -232,8 +245,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 3, bottom: 3)),
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 6)),
                                         Text(
                                           "Ilmu Komputer",
                                           style: TextStyle(),
@@ -249,7 +262,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             elevation: 2,
                             color: const Color(accentColor),
                             child: Container(
-                                width: 320,
+                                width: ((MediaQuery.of(context).size.width) /
+                                    100 *
+                                    80),
                                 padding: const EdgeInsets.all(24),
                                 child: Row(
                                   children: [
@@ -269,15 +284,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                               fontWeight: FontWeight.bold),
                                         ),
                                         const Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 3, bottom: 3)),
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 6)),
                                         const Text(
                                           "https://github.com/kodeaqua",
                                           style: TextStyle(),
                                         ),
                                         const Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 3, bottom: 3)),
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 6)),
                                         ElevatedButton(
                                           onPressed: _launchURL,
                                           child: const Text(
