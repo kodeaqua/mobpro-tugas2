@@ -11,9 +11,9 @@ Color backgroundColor = const Color(0xFFD7CCC8);
 Color accentColor = const Color(0xFF8D6E63);
 Color accentColor2 = const Color(0xFF5D4037);
 
-const textHeaders = TextStyle(
+TextStyle textHeaders = const TextStyle(
     fontFamily: 'Fira Sans', fontWeight: FontWeight.w500, color: Colors.black);
-const textContents = TextStyle(
+TextStyle textContents = const TextStyle(
     fontFamily: 'Fira Sans', fontWeight: FontWeight.w400, color: Colors.black);
 
 void main() {
@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     fontFamily: "Montserrat",
                                     fontWeight: FontWeight.w600),
                               ),
-                              content: const Text(
+                              content: Text(
                                 'Ini adalah improved version dari https://github.com/kodeaqua/prak-mobpro-tugas1',
                                 style: textContents,
                               ),
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 TextButton(
                                     onPressed: () =>
                                         Navigator.pop(context, 'Tutup'),
-                                    child: const Text(
+                                    child: Text(
                                       'Tutup',
                                       style: textHeaders,
                                     ))
@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         const Padding(
                             padding: EdgeInsets.only(top: 3, bottom: 3)),
-                        const Text(
+                        Text(
                           "adam.065119079@unpak.ac.id",
                           style: textContents,
                         ),
@@ -179,14 +179,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const Text("Nomor Pokok Mahasiswa",
+                                        Text("Nomor Pokok Mahasiswa",
                                             style: textHeaders),
                                         const Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 0)),
                                         Row(
                                           children: [
-                                            const Text(
+                                            Text(
                                               "065119079",
                                               style: textContents,
                                             ),
@@ -240,12 +240,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
-                                      children: const [
+                                      children: [
                                         Text(
                                           "Program Studi",
                                           style: textHeaders,
                                         ),
-                                        Padding(
+                                        const Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 6)),
                                         Text(
@@ -278,14 +278,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const Text(
+                                        Text(
                                           "GitHub",
                                           style: textHeaders,
                                         ),
                                         const Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 6)),
-                                        const Text(
+                                        Text(
                                           "https://github.com/kodeaqua",
                                           style: textContents,
                                         ),
