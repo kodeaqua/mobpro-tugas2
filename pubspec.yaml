@@ -101,3 +101,9 @@ flutter:
         fonts:
           - asset: fonts/Satisfy-Regular.ttf
             weight: 400
+      - family: Fira Sans
+        fonts:
+          - asset: fonts/FiraSans-Regular.ttf
+            weight: 400
+          - asset: fonts/FiraSans-Medium.ttf
+            weight: 500

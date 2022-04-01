@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'util/MaterialColor.dart';
 
 const String _npm = "065119079";
 const String _github = "https://github.com/kodeaqua/mobpro-tugas2";
-const int backgroundColor = 0xFFD7CCC8;
-const int accentColor = 0xFF8D6E63;
-const int accentColor2 = 0xFF5D4037;
+
+Color backgroundColor = const Color(0xFFD7CCC8);
+Color accentColor = const Color(0xFF8D6E63);
+Color accentColor2 = const Color(0xFF5D4037);
+
+const textHeaders = TextStyle(
+    fontFamily: 'Fira Sans', fontWeight: FontWeight.w500, color: Colors.black);
+const textContents = TextStyle(
+    fontFamily: 'Fira Sans', fontWeight: FontWeight.w400, color: Colors.black);
 
 void main() {
   runApp(const MyApp());
@@ -17,26 +24,6 @@ void _launchURL() async {
   await launch(_github);
 }
 
-MaterialColor buildMaterialColor(Color color) {
-  List strengths = <double>[.05];
-  Map<int, Color> swatch = {};
-  final int r = color.red, g = color.green, b = color.blue;
-
-  for (int i = 1; i < 10; i++) {
-    strengths.add(0.1 * i);
-  }
-  for (var strength in strengths) {
-    final double ds = 0.5 - strength;
-    swatch[(strength * 1000).round()] = Color.fromRGBO(
-      r + ((ds < 0 ? r : (255 - r)) * ds).round(),
-      g + ((ds < 0 ? g : (255 - g)) * ds).round(),
-      b + ((ds < 0 ? b : (255 - b)) * ds).round(),
-      1,
-    );
-  }
-  return MaterialColor(color.value, swatch);
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -44,12 +31,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: Color(backgroundColor)));
+        SystemUiOverlayStyle(statusBarColor: backgroundColor));
     return MaterialApp(
       title: 'Tugas 2 Mobile Programming',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: buildMaterialColor(const Color(accentColor2)),
+        primarySwatch: buildMaterialColor(accentColor2),
       ),
       home: const MyHomePage(title: 'Tugas 2 Mobile Programming'),
     );
@@ -72,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         value: SystemUiOverlayStyle.light,
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color(backgroundColor),
+              backgroundColor: backgroundColor,
               foregroundColor: Colors.black,
               leading: Builder(
                 builder: (BuildContext context) {
@@ -85,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 1,
                           textColor: Colors.white,
-                          backgroundColor: const Color(accentColor2));
+                          backgroundColor: accentColor2);
                     },
                     tooltip:
                         MaterialLocalizations.of(context).backButtonTooltip,
@@ -105,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     showDialog(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                              backgroundColor: const Color(backgroundColor),
+                              backgroundColor: backgroundColor,
                               title: const Text(
                                 'Tentang aplikasi',
                                 style: TextStyle(
@@ -113,14 +100,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                     fontWeight: FontWeight.w600),
                               ),
                               content: const Text(
-                                  'Ini adalah improved version dari https://github.com/kodeaqua/prak-mobpro-tugas1'),
+                                'Ini adalah improved version dari https://github.com/kodeaqua/prak-mobpro-tugas1',
+                                style: textContents,
+                              ),
                               actions: [
                                 TextButton(
                                     onPressed: () =>
                                         Navigator.pop(context, 'Tutup'),
                                     child: const Text(
                                       'Tutup',
-                                      style: TextStyle(color: Colors.black),
+                                      style: textHeaders,
                                     ))
                               ],
                             ));
@@ -130,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ],
             ),
-            backgroundColor: const Color(backgroundColor),
+            backgroundColor: backgroundColor,
             body: SingleChildScrollView(
               child: Center(
                 child: Row(
@@ -155,7 +144,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         const Text(
                           "Adam Najmi Zidan",
                           style: TextStyle(
-                              letterSpacing: 3,
                               fontSize: 32,
                               fontFamily: "Satisfy",
                               fontWeight: FontWeight.w600),
@@ -164,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             padding: EdgeInsets.only(top: 3, bottom: 3)),
                         const Text(
                           "adam.065119079@unpak.ac.id",
-                          style: TextStyle(fontSize: 14, color: Colors.black),
+                          style: textContents,
                         ),
                         const Padding(
                             padding: EdgeInsets.only(top: 6, bottom: 6)),
@@ -173,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               borderRadius: BorderRadius.circular(32),
                             ),
                             elevation: 2,
-                            color: const Color(accentColor),
+                            color: accentColor,
                             child: Container(
                                 width: ((MediaQuery.of(context).size.width) /
                                     100 *
@@ -191,12 +179,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const Text(
-                                          "Nomor Pokok Mahasiswa",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                        const Text("Nomor Pokok Mahasiswa",
+                                            style: textHeaders),
                                         const Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 0)),
@@ -204,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           children: [
                                             const Text(
                                               "065119079",
-                                              style: TextStyle(),
+                                              style: textContents,
                                             ),
                                             IconButton(
                                               icon: const Icon(
@@ -226,8 +210,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                     timeInSecForIosWeb: 1,
                                                     textColor: Colors.white,
                                                     backgroundColor:
-                                                        const Color(
-                                                            accentColor2));
+                                                        accentColor2);
                                               },
                                             )
                                           ],
@@ -241,7 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               borderRadius: BorderRadius.circular(32),
                             ),
                             elevation: 2,
-                            color: const Color(accentColor),
+                            color: accentColor,
                             child: Container(
                                 width: ((MediaQuery.of(context).size.width) /
                                     100 *
@@ -260,16 +243,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: const [
                                         Text(
                                           "Program Studi",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold),
+                                          style: textHeaders,
                                         ),
                                         Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 6)),
                                         Text(
                                           "Ilmu Komputer",
-                                          style: TextStyle(),
+                                          style: textContents,
                                         ),
                                       ],
                                     )
@@ -280,7 +261,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               borderRadius: BorderRadius.circular(32),
                             ),
                             elevation: 2,
-                            color: const Color(accentColor),
+                            color: accentColor,
                             child: Container(
                                 width: ((MediaQuery.of(context).size.width) /
                                     100 *
@@ -299,16 +280,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         const Text(
                                           "GitHub",
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.bold),
+                                          style: textHeaders,
                                         ),
                                         const Padding(
                                             padding: EdgeInsets.symmetric(
                                                 vertical: 6)),
                                         const Text(
                                           "https://github.com/kodeaqua",
-                                          style: TextStyle(),
+                                          style: textContents,
                                         ),
                                         const Padding(
                                             padding: EdgeInsets.symmetric(
@@ -317,12 +296,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                           onPressed: _launchURL,
                                           child: const Text(
                                             'Repositori',
-                                            style:
-                                                TextStyle(color: Colors.black),
+                                            style: TextStyle(
+                                                fontFamily: 'Fira Sans',
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black),
                                           ),
                                           style: ElevatedButton.styleFrom(
-                                              primary:
-                                                  const Color(backgroundColor)),
+                                              primary: backgroundColor),
                                         )
                                       ],
                                     )
