@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:prak_mobpro_tugas1/screen/home_card.dart';
+import 'package:prak_mobpro_tugas1/component/home_cardbutton.dart';
 import 'package:prak_mobpro_tugas1/util/color_converter.dart';
 import 'package:prak_mobpro_tugas1/util/styles.dart';
 
