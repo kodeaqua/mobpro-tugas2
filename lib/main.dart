@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'util/color.dart';
+import 'package:prak_mobpro_tugas1/screen/home_card.dart';
+import 'package:prak_mobpro_tugas1/util/color_converter.dart';
+import 'package:prak_mobpro_tugas1/util/styles.dart';
 
 const String _github = "https://github.com/kodeaqua/mobpro-tugas2";
-
-Color backgroundColor = const Color(0xFFD7CCC8);
-Color accentColor = const Color(0xFF8D6E63);
-Color accentColor2 = const Color(0xFF5D4037);
-
-TextStyle textHeaders = const TextStyle(
-    fontFamily: 'Fira Sans', fontWeight: FontWeight.w500, color: Colors.black);
-TextStyle textContents = const TextStyle(
-    fontFamily: 'Fira Sans', fontWeight: FontWeight.w400, color: Colors.black);
 
 void main() {
   runApp(const MyApp());
@@ -189,56 +182,5 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             )));
-  }
-}
-
-class CardButton extends StatelessWidget {
-  const CardButton(
-      {Key? key,
-      required this.title,
-      required this.subtitle,
-      required this.icon,
-      this.onPressed})
-      : super(key: key);
-
-  final String title;
-  final String subtitle;
-  final IconData icon;
-  final dynamic onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: accentColor),
-        onPressed: onPressed ?? () {},
-        child: SizedBox(
-          height: 96,
-          width: ((MediaQuery.of(context).size.width) / 100 * 80),
-          child: Row(children: [
-            SizedBox(
-              width: ((MediaQuery.of(context).size.width) / 100 * 8),
-              child: Icon(
-                icon,
-                color: Colors.black,
-              ),
-            ),
-            const Padding(padding: EdgeInsets.only(left: 16)),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: textHeaders,
-                ),
-                const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
-                Text(
-                  subtitle,
-                  style: textContents,
-                )
-              ],
-            ),
-          ]),
-        ));
   }
 }
