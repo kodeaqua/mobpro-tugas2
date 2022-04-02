@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'util/MaterialColor.dart';
+import 'util/color.dart';
 
-const String _npm = "065119079";
 const String _github = "https://github.com/kodeaqua/mobpro-tugas2";
 
 Color backgroundColor = const Color(0xFFD7CCC8);
@@ -155,164 +154,91 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: textContents,
                         ),
                         const Padding(
-                            padding: EdgeInsets.only(top: 6, bottom: 6)),
-                        Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32),
-                            ),
-                            elevation: 2,
-                            color: accentColor,
-                            child: Container(
-                                width: ((MediaQuery.of(context).size.width) /
-                                    100 *
-                                    80),
-                                padding:
-                                    const EdgeInsets.fromLTRB(24, 24, 24, 12),
-                                child: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.perm_identity_outlined,
-                                    ),
-                                    const Padding(
-                                        padding: EdgeInsets.only(right: 24)),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text("Nomor Pokok Mahasiswa",
-                                            style: textHeaders),
-                                        const Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 0)),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              "065119079",
-                                              style: textContents,
-                                            ),
-                                            IconButton(
-                                              icon: const Icon(
-                                                Icons.copy_outlined,
-                                                size: 16,
-                                              ),
-                                              tooltip: "Salin NPM",
-                                              onPressed: () {
-                                                Clipboard.setData(
-                                                    const ClipboardData(
-                                                        text: _npm));
-                                                Fluttertoast.showToast(
-                                                    msg:
-                                                        "NPM berhasil disalin!",
-                                                    toastLength:
-                                                        Toast.LENGTH_SHORT,
-                                                    gravity:
-                                                        ToastGravity.BOTTOM,
-                                                    timeInSecForIosWeb: 1,
-                                                    textColor: Colors.white,
-                                                    backgroundColor:
-                                                        accentColor2);
-                                              },
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ))),
-                        Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32),
-                            ),
-                            elevation: 2,
-                            color: accentColor,
-                            child: Container(
-                                width: ((MediaQuery.of(context).size.width) /
-                                    100 *
-                                    80),
-                                padding: const EdgeInsets.all(24),
-                                child: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.verified_user_outlined,
-                                    ),
-                                    const Padding(
-                                        padding: EdgeInsets.only(right: 24)),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Program Studi",
-                                          style: textHeaders,
-                                        ),
-                                        const Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 6)),
-                                        Text(
-                                          "Ilmu Komputer",
-                                          style: textContents,
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ))),
-                        Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32),
-                            ),
-                            elevation: 2,
-                            color: accentColor,
-                            child: Container(
-                                width: ((MediaQuery.of(context).size.width) /
-                                    100 *
-                                    80),
-                                padding: const EdgeInsets.all(24),
-                                child: Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.link_outlined,
-                                    ),
-                                    const Padding(
-                                        padding: EdgeInsets.only(right: 24)),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "GitHub",
-                                          style: textHeaders,
-                                        ),
-                                        const Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 6)),
-                                        Text(
-                                          "https://github.com/kodeaqua",
-                                          style: textContents,
-                                        ),
-                                        const Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 6)),
-                                        ElevatedButton(
-                                          onPressed: _launchURL,
-                                          child: const Text(
-                                            'Repositori',
-                                            style: TextStyle(
-                                                fontFamily: 'Fira Sans',
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.black),
-                                          ),
-                                          style: ElevatedButton.styleFrom(
-                                              primary: backgroundColor),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ))),
+                            padding: EdgeInsets.symmetric(vertical: 8)),
+                        const CardButton(
+                            title: "Nomor Pokok Mahasiswa",
+                            subtitle: "065119079",
+                            icon: Icons.card_membership_outlined),
+                        const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3)),
+                        const CardButton(
+                          title: "Program Studi",
+                          subtitle: "Ilmu Komputer",
+                          icon: Icons.work_outlined,
+                        ),
+                        const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3)),
+                        const CardButton(
+                          title: "Status Mahasiswa",
+                          subtitle: "Aktif",
+                          icon: Icons.star,
+                        ),
+                        const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3)),
+                        const CardButton(
+                          title: "Github",
+                          subtitle: "Kodeaqua",
+                          icon: Icons.storage_outlined,
+                          onPressed: _launchURL,
+                        ),
+                        const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 8)),
                       ],
                     ),
                   ],
                 ),
               ),
             )));
+  }
+}
+
+class CardButton extends StatelessWidget {
+  const CardButton(
+      {Key? key,
+      required this.title,
+      required this.subtitle,
+      required this.icon,
+      this.onPressed})
+      : super(key: key);
+
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final dynamic onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(primary: accentColor),
+        onPressed: onPressed ?? () {},
+        child: SizedBox(
+          height: 96,
+          width: ((MediaQuery.of(context).size.width) / 100 * 80),
+          child: Row(children: [
+            SizedBox(
+              width: ((MediaQuery.of(context).size.width) / 100 * 8),
+              child: Icon(
+                icon,
+                color: Colors.black,
+              ),
+            ),
+            const Padding(padding: EdgeInsets.only(left: 16)),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: textHeaders,
+                ),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 4)),
+                Text(
+                  subtitle,
+                  style: textContents,
+                )
+              ],
+            ),
+          ]),
+        ));
   }
 }
